@@ -69,7 +69,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   ] = useState<string | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://172.20.10.2:8080");
+    const ws = new WebSocket("ws://192.168.23.110:8080");
 
     ws.onopen = () => {
       setSocket(ws);
@@ -93,8 +93,9 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   }, []);
 
   const processIncommingMessage = (msg: WebSocketMessage) => {
+    console.log(msg)
     switch (msg.action) {
-      case "connected":
+      case "connected": 
         setConnectedWebId(msg.peerId);
         break;
       case "disconnected":
